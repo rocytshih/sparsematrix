@@ -1,0 +1,38 @@
+{
+  "tasks": [
+      {
+          "type": "shell",
+          "label": "g++.exe build active file",   //与launch.json的preLaunchTask一致
+          "command": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\g++.exe",    //g++.exe的路径
+          "args": [
+              "-g",
+              "${workspaceFolder}\\**.cpp",   //${workspaceFolder}表示.vscode所在的那个文件夹的路径
+              "-o",
+              "${workspaceFolder}\\${fileBasenameNoExtension}.exe" ,   //与launch的program对应
+              "-std=c++17"
+          ],
+          "options": {
+              "cwd": "${workspaceFolder}"
+          },
+          "problemMatcher": {
+              "owner": "cpp",
+              "fileLocation":[
+                  "relative", "${workspaceFolder}"
+              ],
+              "pattern":{
+                  "regexp": "%(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                  "file": 1,
+                  "line": 2,
+                  "column": 3,
+                  "severity": 4,
+                  "message": 5
+              }
+          },
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          }
+      }
+  ],
+  "version": "2.0.0"
+}
